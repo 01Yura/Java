@@ -20,5 +20,7 @@ public class Main {  // Главный класс с методом main
     public static void main(String[] args) {
         Car myCar = new Car("Toyota", 1985, true);  // Создаём объект
         myCar.drive();  // Вызываем метод
+        Moto myMoto = new Moto();
+        System.out.println(myMoto.year);
     }
 }
