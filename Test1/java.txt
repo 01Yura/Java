@@ -1,0 +1,206 @@
+Java is a high-level, object-oriented, and class-based programming language. Key features: strictly typed, object-oriented, platform independent, compiled and interpreted, has automation memory management (garbage collection)
+
+Основные особенности Java:
+
+    Строгая типизация: В Java обязательно указывать тип данных переменных (например, int, String). Это означает, что компилятор строго проверяет типы данных во время компиляции.
+    Объектно-ориентированность: Все в Java — это объекты и классы, за исключением примитивных типов данных (например, int, char и т. д.). Программирование в Java строится вокруг концепций классов, наследования, полиморфизма, инкапсуляции и абстракции.
+    Компилируемый язык: Java компилируется в байт-код (в файл .class), который затем выполняется на JVM. Это позволяет запускать Java-программы на любых платформах, где есть JVM.
+    Платформонезависимость: Благодаря JVM, программы, написанные на Java, могут быть запущены на любой платформе (Windows, Linux, Mac) без изменений в коде.ё
+    Обработка ошибок: Java использует механизм исключений для обработки ошибок во время выполнения программы.
+
+В Java есть два типа данных: примитивные (primitive data types) и ссылочные (reference types).
+
+Примитивные типы данных — это самые простые типы, которые хранят конкретные значения, а не ссылки на объекты. Представь, что это строительные кирпичики, из которых можно создавать более сложные структуры.
+
+В Java есть 8 примитивных типов:
+Тип	    Описание	                        Размер	                    Пример значения
+byte	Целое число (очень маленькое)	    1 байт	                    100
+short	Целое число (маленькое)	            2 байта	                    20000
+int	    Целое число (стандартное)	        4 байта	                    123456789
+long	Целое число (большое)	            8 байтов	                9223372036854775807L
+float	Дробное число (с плавающей запятой)	4 байта	                    3.14f
+double	Дробное число (повышенной точности)	8 байтов	                3.1415926535
+char	Один символ	                        2 байта	                    'A', '7' (пишется в одинарных кавычках)
+boolean	Логический тип (true/false)	        1 бит	                    true, false
+
+
+В числах со знаком (например, int в Java) первый бит (самый левый) отвечает за знак числа.
+
+    Если первый бит = 0, число положительное или ноль.
+    Если первый бит = 1, число отрицательное.
+
+Пример для 4-байтового (32-битного) int:
+Первый бит	Остальные 31 бита	                Число
+0	        0000000000000000000000000000001	    +1
+1	        0000000000000000000000000000001	    -1
+
+Ссылочные типы (объекты, массивы, строки)
+Ссылочные типы – это сложные структуры данных, они хранят не сами данные, а ссылки (адреса в памяти).
+
+Имена переменных пишутся используя camelCase, всегда начинаются с маленькой буквы, могут начинаться с буквы, $ или _. С цифр или других символов - не могут.
+
+Compound assignment operator - это типо test += 2
+
+System.out.println("Min: " + Integer.MIN_VALUE); // Prints: Min: -2147483648
+System.out.println("Max: " + Integer.MAX_VALUE); // Prints: Max: 2147483647
+
+Converting Integer and String Values
+
+Преобразование (casting) из int в String:
+
+    int numInt = 15;
+    System.out.println("Int value: " + numInt);
+    // Convert int value to String
+    String numString = String.valueOf(numInt);
+    System.out.println("String value: " + numString);
+
+    This will output:
+
+    Int value: 15
+    String value: 15
+
+Преобразование из String в int:
+
+    String numString = "12";
+    // convert String to int
+    int numInt = Integer.parseInt(numString);
+    System.out.println("The int value: " + numInt); // Prints: The int value: 12
+    // we can now use the value like any other int
+    numInt++;
+    System.out.println(numInt); // Prints: 13
+
+Conclusions about casting of types:
+
+    Casting is the process of converting a value of one primitive data type to another.
+    Narrow type casting occurs when the amount of data held a value decreases after conversion.
+    To convert a double into an int, we must use the (int) casting operator.
+    Narrow type casting does not automatically occur in Java and must be done manually by the programmer.
+    Widening type casting occurs when a value increases how much data it holds after casting.
+    To convert an int to a double, we need to use the (double) casting operator.
+    Widening type casting can occur automatically in Java. String values can be converted to an int using the parseInt() method from the Integer class.
+    An int value can be converted into a String using the valueOf() method from the String class.
+
+        КОНСТРУКТОР
+
+В Java конструктор — это специальный метод, который вызывается при создании объекта. Он нужен для инициализации объекта, то есть для задания его начального состояния.
+Основные характеристики конструктора:
+
+    Имя конструктора совпадает с именем класса.
+    Конструктор не имеет возвращаемого типа (даже void не указывается).
+    Вызывается автоматически при создании объекта с помощью new.
+
+class Car {
+    String brand;
+    int year;
+
+    // Конструктор класса Car
+    Car(String b, int y) {
+        brand = b;
+        year = y;
+    }
+
+    void displayInfo() {
+        System.out.println("Brand: " + brand + ", Year: " + year);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Toyota", 2022); // Вызов конструктора
+        myCar.displayInfo(); // Выведет: Brand: Toyota, Year: 2022
+    }
+}
+
+Если в Java не создан никакой конструктор, компилятор добавляет конструктор по умолчанию, который заполняет поля значениями по умолчанию: числовые поля = 0, логические поля = false, ссылки = null.
+
+public class MyClass {
+    // Поля класса
+    int number;        // по умолчанию инициализируется как 0
+    boolean flag;      // по умолчанию инициализируется как false
+    String text;       // по умолчанию инициализируется как null
+
+    public static void main(String[] args) {
+        // Создаем объект класса MyClass
+        MyClass obj = new MyClass();
+
+        // Выводим значения полей объекта
+        System.out.println("number: " + obj.number);   // Выведет: number: 0
+        System.out.println("flag: " + obj.flag);         // Выведет: flag: false
+        System.out.println("text: " + obj.text);         // Выведет: text: null
+    }
+}
+
+        МЕТОДЫ
+
+Every method has its own unique method signature which is composed of the method’s name and its parameter type. In this example, the method signature is checkBalance()
+
+A method is a task (function) that an object of a class performs.
+We mark the domain of this task using curly braces: {, and }. Everything inside the curly braces is part of the task. This domain is called the scope of a method.
+
+Можно создавать методы с одинаковым названием, главное чтобы были разные параметры:
+
+// Method 1
+public void startRadio(double stationNum, String stationName) {
+  System.out.println("Turning on the radio to " + stationNum + ", " + stationName + "!");
+  System.out.println("Enjoy!");
+}
+
+// Method 2
+public void startRadio(double stationNum) {
+  System.out.println("Turning on the radio to " + stationNum + "!");
+}
+
+public static void main(String[] args){
+  Car myCar = new Car("red");
+  // Calls the first startRadio() method
+  myCar.startRadio(103.7, "Meditation Station");
+
+  // Calls the second startRadio() method
+  myCar.startRadio(98.2);
+}
+
+        ОБЛАСТЬ ВИДИМОСТИ
+
+Переменые находящиеся внутри метода, не будут видны вне метода, так как у них есть так называемая область видимости (scope and out of the scope)
+При обращении к переменной, которая out of scope, компилтятор выдаст ошибку.
+Но если мы сделаем их return из метода, то они становятся в области видимсти.
+
+В Java ключевое слово void используется в методах, которые не возвращают значение. Если метод возвращает значение, то вместо void указывается тип возвращаемого значения (например, int, String, boolean и т. д.).
+
+Пример 1: Метод с void (ничего не возвращает)
+
+public class Example {
+    public static void main(String[] args) {
+        sayHello(); // Вызов метода
+    }
+
+    // Метод с void: выполняет действие, но ничего не возвращает
+    public static void sayHello() {
+        System.out.println("Привет, мир!"); // Просто выводит текст
+    }
+}
+
+Объяснение:
+
+    void означает, что метод ничего не возвращает.
+    Метод sayHello() просто выводит сообщение на экран, но не возвращает никакого значения.
+
+Пример 2: Метод без void (возвращает значение)
+
+public class Example {
+    public static void main(String[] args) {
+        int sum = add(5, 3); // Вызов метода и сохранение результата
+        System.out.println("Сумма: " + sum);
+    }
+
+    // Метод возвращает сумму двух чисел (int вместо void)
+    public static int add(int a, int b) {
+        return a + b; // Возвращает сумму
+    }
+}
+
+Объяснение:
+
+    Метод add(int a, int b) возвращает число, поэтому вместо void указано int.
+    Оператор return возвращает результат (a + b).
+    В main() мы можем сохранить результат вызова метода в переменную sum и использовать его.
